@@ -11,9 +11,15 @@ CPU scheduling is a fundamental aspect of operating system design that determine
   - Non-preemptive
   - Easy to implement
   - Can lead to the "convoy effect," where shorter processes get stuck waiting behind longer processes
-- **Example**:
-  - Process Arrival: P1, P2, P3
-  - Execution Order: P1 -> P2 -> P3
+
+- **Limitations**:
+  - Poor performance for short processes
+  - Average waiting time can be high
+  - Not suitable for time-sharing systems
+
+- **Applications**:
+  - Batch processing systems where all jobs are similar in size and importance
+  - Environments where simplicity and ease of implementation are priorities
 
 ### 2. Shortest Job First (SJF)
 
@@ -22,9 +28,15 @@ CPU scheduling is a fundamental aspect of operating system design that determine
   - Can be preemptive or non-preemptive
   - Minimizes average waiting time
   - Difficult to implement because it requires knowledge of future burst times
-- **Example**:
-  - Process Burst Time: P1 (6ms), P2 (2ms), P3 (4ms)
-  - Execution Order: P2 -> P3 -> P1
+
+- **Limitations**:
+  - Difficult to predict the length of the next CPU burst
+  - Risk of starvation for longer processes
+  - Not suitable for time-sharing systems
+
+- **Applications**:
+  - Batch processing systems where job lengths are known in advance
+  - Environments where minimizing average waiting time is critical
 
 ### 3. Round Robin (RR)
 
@@ -33,10 +45,15 @@ CPU scheduling is a fundamental aspect of operating system design that determine
   - Preemptive
   - Ensures fair sharing of CPU time
   - Performance depends on the length of the time quantum
-- **Example**:
-  - Time Quantum: 4ms
-  - Process Burst Time: P1 (8ms), P2 (6ms), P3 (4ms)
-  - Execution Order: P1 (4ms) -> P2 (4ms) -> P3 (4ms) -> P1 (4ms) -> P2 (2ms)
+
+- **Limitations**:
+  - Selecting an appropriate time quantum is challenging
+  - Can lead to high context-switching overhead
+  - Average waiting time can be high for processes with varying execution times
+
+- **Applications**:
+  - Time-sharing systems where fairness is essential
+  - Interactive systems where quick response time is needed
 
 ### 4. Priority Scheduling
 
@@ -45,8 +62,14 @@ CPU scheduling is a fundamental aspect of operating system design that determine
   - Can be preemptive or non-preemptive
   - May lead to "starvation" of lower priority processes
   - Can be mitigated using "aging," which gradually increases the priority of waiting processes
-- **Example**:
-  - Process Priority: P1 (2), P2 (1), P3 (3) [Higher number indicates higher priority]
-  - Execution Order: P3 -> P1 -> P2
+
+- **Limitations**:
+  - Risk of starvation for low-priority processes
+  - Determining priority levels can be complex
+  - Not suitable for systems requiring strict fairness
+
+- **Applications**:
+  - Real-time systems where certain tasks must be executed immediately
+  - Systems with mixed workloads requiring different levels of service
 
 ---
